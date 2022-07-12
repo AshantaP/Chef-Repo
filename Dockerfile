@@ -1,9 +1,9 @@
-FROM ubuntu:latest
+FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y unzip && \
+    apt-get install -y redis-server && \
     apt-get clean
 
-#Installing jdk1.8
-ENV JAVA_HOME=1.8
-RUN sudo apt install openjdk-11-jdk
+EXPOSE 6379
+
+CMD ["redis-server", "--protected-mode no"]
